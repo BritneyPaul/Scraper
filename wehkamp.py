@@ -15,10 +15,10 @@ with open('images/Wehkamp_images.csv', 'w', newline='', encoding='utf-8') as ima
      open('reviews/Wehkamp_reviews.csv', 'w', newline='', encoding='utf-8') as review_file:
      
     # create the csv writers
-    image_fieldnames = ['Wehkamp_IMG']
+    image_fieldnames = ['Wehkamp_images']
     image_writer = csv.DictWriter(image_file, fieldnames=image_fieldnames)
 
-    review_fieldnames = ['Wehkamp_Review']
+    review_fieldnames = ['Wehkamp_reviews']
     review_writer = csv.DictWriter(review_file, fieldnames=review_fieldnames)
 
     PgNumber = 1 #start at page one
@@ -46,7 +46,7 @@ with open('images/Wehkamp_images.csv', 'w', newline='', encoding='utf-8') as ima
             review_button = driver.find_element(By.CSS_SELECTOR, 'button.ReviewSummary__ba-review-link___PH5fZ.type-link-inline.inline-block.rating-link.margin-left-small.color-black-opacity-88')
             review_button.click()
             
-            image_writer.writerow({'Wehkamp_image': src})#writes img to csv
+            image_writer.writerow({'Wehkamp_images': src})#writes img to csv
 
             time.sleep(1)
 
@@ -59,7 +59,7 @@ with open('images/Wehkamp_images.csv', 'w', newline='', encoding='utf-8') as ima
 
 
             for review in reviews:
-                review_writer.writerow({'Wehkamp_Review': review.text})
+                review_writer.writerow({'Wehkamp_reviews': review.text})
                 review_file.flush()
 
             
